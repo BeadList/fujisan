@@ -1,5 +1,10 @@
-var exec = require('child_process').exec;
-var fs = require('fs-extra');
+var thenifyAll = require('thenify-all');
+var exec = require('mz/child_process').exec;
+var fs =  thenifyAll(require('fs-extra'), {}, [
+  'remove',
+  'copy',
+  'exists'
+]);
 var process = require('process');
 var expect =  require('chai').expect;
 
@@ -11,22 +16,25 @@ module.exports = English.library()
   .given('a fixture app "$APP"', function(app, next) {
     var testFixture = './test/fixtures/' + app;
     var tempFixture = './temp/fixtures/' + app;
-    fs.removeSync(tempFixture);
-    fs.copySync(testFixture, tempFixture);
-    process.chdir(tempFixture);
-    next();
+
+    fs.remove(tempFixture)
+      .then(function(){
+        return fs.copy(testFixture, tempFixture);
+      })
+      .then(function(){
+        process.chdir(tempFixture);
+        next();
+      })
+      .catch(next);
+
   })
   .when('I run "$COMMAND"', function(command, next) {
-    exec(command,  function (error, stdout, stderr) {
-      if (error) {
-        console.log(error.stack);
-        console.log('Error code: '+error.code);
-        console.log('Signal received: '+error.signal);
-      }
-      next(error);
-    });
+    exec(command).then(function (stdout, stderr) {
+      next();
+    }).catch(next);
   })
   .then('the following files should exist:\n((.|\n)+)', function(files, na,next) {
+    // HACK: use promises
     _.forEach(files.split('\n'), function(file) {
       expect(fs.existsSync(file)).to.be.true;
     });
