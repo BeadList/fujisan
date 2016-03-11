@@ -2,10 +2,19 @@
   "name": "fujisan",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "lib/gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "yadda": "^0.17.1"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "lodash": "^4.6.1"
+  }
 }
