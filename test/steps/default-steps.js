@@ -1,15 +1,19 @@
 var exec = require('child_process').exec;
-var fs = require('fs');
+var fs = require('fs-extra');
 var process = require('process');
 var expect =  require('chai').expect;
 
-_ = require('lodash');
+var _ = require('lodash');
 var English = require('yadda').localisation.English;
 
+var TEMP = 'temp';
 module.exports = English.library()
   .given('a fixture app "$APP"', function(app, next) {
-    this.context.fixtureApp = app;
-    process.chdir('./test/fixtures/' + app);
+    var testFixture = './test/fixtures/' + app;
+    var tempFixture = './temp/fixtures/' + app;
+    fs.removeSync(tempFixture);
+    fs.copySync(testFixture, tempFixture);
+    process.chdir(tempFixture);
     next();
   })
   .when('I run "$COMMAND"', function(command, next) {
