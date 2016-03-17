@@ -1,7 +1,7 @@
-Feature: Preprocessors
+Feature: Pages
 
 Scenario: Compile simple file
-  Given a fixture app "preprocessors"
+  Given a fixture app "pages"
   When I run "gulp fuji:build"
   Then the following file should exist:
   ---
