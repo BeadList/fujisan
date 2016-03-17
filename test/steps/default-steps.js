@@ -14,8 +14,8 @@ var English = require('yadda').localisation.English;
 var TEMP = 'temp';
 module.exports = English.library()
   .given('a fixture app "$APP"', function(app, next) {
-    var testFixture = './test/fixtures/' + app;
-    var tempFixture = './temp/fixtures/' + app;
+    var testFixture = __dirname + '/../../test/fixtures/' + app;
+    var tempFixture = __dirname + '/../../temp/fixtures/' + app;
 
     fs.remove(tempFixture)
       .then(function(){
@@ -33,10 +33,17 @@ module.exports = English.library()
       next();
     }).catch(next);
   })
-  .then('the following files should exist:\n((.|\n)+)', function(files, na,next) {
+  .then('the following files? should exist:\n((.|\n)+)', function(files, na, next) {
     // HACK: use promises
+    this.context.files = files.split('\n');
     _.forEach(files.split('\n'), function(file) {
       expect(fs.existsSync(file)).to.be.true;
     });
     next();
+  })
+  .then('the contents of it should be:\n((.|\n)+)', function(contents, na, next) {
+    fs.readFile(this.context.files[0], function(err, realContents) {
+      expect(realContents.toString()).to.equal(contents);
+      next();
+    });
   });
