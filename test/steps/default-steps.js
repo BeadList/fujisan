@@ -11,11 +11,10 @@ var expect =  require('chai').expect;
 var _ = require('lodash');
 var English = require('yadda').localisation.English;
 
-var TEMP = 'temp';
 module.exports = English.library()
   .given('a fixture app "$APP"', function(app, next) {
     var testFixture = __dirname + '/../../test/fixtures/' + app;
-    var tempFixture = __dirname + '/../../temp/fixtures/' + app;
+    var tempFixture = __dirname + '/../../temp/test/' + app;
 
     fs.remove(tempFixture)
       .then(function(){
