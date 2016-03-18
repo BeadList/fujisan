@@ -1,0 +1,19 @@
+<h1>Chain Preprocessors</h1>
+<p>By default any file in helpers, javascripts, stylesheets, partials,
+layouts, pages can be preprocessed. More than that it can pass through
+multiple preprocessors. For that just add preprocessor extension to
+file, in reverse order they are going to be preprocessed, i.e. to
+preprocess html page with ejs and then with markdown, add <code>ejs</code> and
+<code>md</code> extensions to file in reverse order, thus file <code>index.html.md.ejs</code> will
+be converted to <code>index.html</code>. Notice the html extension presence in both files.</p>
+<p>You can preprocess js, html, css files. By default fujisan comes with
+these preprocessors:</p>
+<ul>
+<li>ejs</li>
+<li>handlebars</li>
+<li>jade</li>
+<li>markdown</li>
+<li>coffeescript</li>
+<li>sass</li>
+</ul>
+<p>Feel free to install whichever preprocessor you going to use in project.</p>
