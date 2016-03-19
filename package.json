@@ -19,9 +19,14 @@
     "yadda": "^0.17.1"
   },
   "dependencies": {
+    "coffee-script": "^1.10.0",
+    "commonmark": "^0.24.0",
+    "ejs": "^2.4.1",
     "gulp": "^3.9.1",
     "gulp-chained-preprocessors": "^0.8.1",
+    "handlebars": "^4.0.5",
     "lodash": "^4.6.1",
+    "node-sass": "^3.4.2",
     "stream-combiner2": "^1.1.1"
   }
 }
