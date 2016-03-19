@@ -28,9 +28,10 @@ module.exports = English.library()
 
   })
   .when('I run "$COMMAND"', function(command, next) {
-    exec(command).then(function (stdout, stderr) {
+    exec(command).then((function (stdout, stderr) {
+      this.context.stdout = stdout[0];
       next();
-    }).catch(next);
+    }).bind(this)).catch(next);
   })
   .then('the following files? should exist:\n((.|\n)+)', function(files, na, next) {
     // HACK: use promises
@@ -45,4 +46,8 @@ module.exports = English.library()
       expect(realContents.toString()).to.equal(contents);
       next();
     });
+  })
+  .then('it outputs:\n((.|\n)+)', function(output, na, next) {
+    expect(output).to.equal(this.context.stdout);
+    next();
   });
