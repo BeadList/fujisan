@@ -3,7 +3,7 @@ var mocha = require('gulp-mocha');
 
 gulp.task('test', function() {
   return gulp.src('test/acceptance-test.js', { read: false })
-    .pipe(mocha({reporter: 'spec'}));
+    .pipe(mocha({ reporter: 'spec', timeout: 5000 }));
 });
 
 gulp.task('default', ['test']);
