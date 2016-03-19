@@ -21,6 +21,7 @@
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-chained-preprocessors": "^0.8.1",
-    "lodash": "^4.6.1"
+    "lodash": "^4.6.1",
+    "stream-combiner2": "^1.1.1"
   }
 }
