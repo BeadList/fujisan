@@ -29,3 +29,15 @@ Scenario: Use different prefix
   default
 
   ---
+
+Scenario: Use streams
+  Given a fixture app "different-usages"
+  When I run "gulp --gulpfile=just-streams.js"
+  Then the following file should exist:
+  ---
+  build/index.html
+  ---
+  And the contents of it should be:
+  ---
+  <html><body><h1>Hello World</h1></body></html>
+  ---
