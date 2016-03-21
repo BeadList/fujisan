@@ -11,7 +11,6 @@ Scenario: Compile simple file
   ---
   .header {
     color: red; }
-
   ---
 
 Scenario: Compile file with imports
@@ -25,5 +24,4 @@ Scenario: Compile file with imports
   ---
   .header {
     color: blue; }
-
   ---

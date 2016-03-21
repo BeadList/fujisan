@@ -42,8 +42,12 @@ module.exports = English.library()
     next();
   })
   .then('the contents of it should be:\n((.|\n)+)', function(contents, na, next) {
+
     fs.readFile(this.context.files[0], function(err, realContents) {
-      expect(realContents.toString()).to.equal(contents);
+      var realContentsTrimmed = contents.toString()
+            .replace(/^\s+\n/g,'\n')
+            .replace(/^\n+$/g,'');
+      expect(realContentsTrimmed).to.equal(contents);
       next();
     });
   })

@@ -23,6 +23,5 @@ Scenario: Compile file with chained preprocessors
   ---
   <h1>Hello</h1>
   <p>10</p>
-
   ---
 
