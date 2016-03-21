@@ -1,4 +1,4 @@
-Feature: Pages
+Feature: Different Usages
 
 Scenario: Simple one everything included
   Given a fixture app "different-usages"

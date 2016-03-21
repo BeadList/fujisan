@@ -1,4 +1,4 @@
-Feature: Pages
+Feature: Sylesheets
 
 Scenario: Compile simple file
   Given a fixture app "stylesheets"

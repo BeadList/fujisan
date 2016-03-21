@@ -1,4 +1,4 @@
-Feature: Pages
+Feature: Helpers
 
 Scenario: Helpers usage in ejs
   Given a fixture app "helpers"

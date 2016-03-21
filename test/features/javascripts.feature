@@ -1,4 +1,4 @@
-Feature: Pages
+Feature: JavaScripts
 
 Scenario: Compile simple file
   Given a fixture app "javascripts"
