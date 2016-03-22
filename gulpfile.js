@@ -12,6 +12,6 @@ gulp.task('unit-test', function() {
     .pipe(mocha({ reporter: 'spec' }));
 });
 
-gulp.task('test', ['acceptance-test', 'unit-test']);
+gulp.task('test', gulp.parallel('acceptance-test', 'unit-test'));
 
-gulp.task('default', ['test']);
+gulp.task('default', gulp.parallel('test'));
