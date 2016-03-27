@@ -1,4 +1,18 @@
+<%- partial('title') %>
+
 <p>
   Quote:
   <%- partial('quote', { quote: 'Oh, I see. You want to take things slow.' }) %>
+  Info:
+  <%- partial('info', { info: 'Her phone looks like a dumbbell with the tips twisted to shape like a real phone.' }) %>
+  Appearances:
 </p>
+<%- partial('appearances', { appearances: [
+    'What is Life?',
+    'Loyalty to the King',
+    'To Cut a Woman\'s Hair',
+    'Princess Monster Wife',
+    'Princess Potluck',
+    'Betty',
+    'Breezy',
+    'Princess Day'] }) %>
