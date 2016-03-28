@@ -14,7 +14,7 @@ Scenario: Compile simple file
   (function () {
     (function () {
       return console.log('hi');
-    });   
+    });
   }).call(undefined);
   ---
 

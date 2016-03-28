@@ -10,9 +10,12 @@ Scenario: Partials usage in ejs
   And the contents of it should be:
   ---
   <h1>Princess</h1>
+
+
   <p>
     Quote:
     <q>Oh, I see. You want to take things slow.</q>
+
     Info:
     <strong>Her phone looks like a dumbbell with the tips twisted to shape like a real phone.</strong>
     Appearances:
