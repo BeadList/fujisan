@@ -1,0 +1,9 @@
+!= partial('title')
+p
+  | Quote:
+  != partial('quote', { quote: 'I\'m really nervous right now... I-I just really want to meet a nice king.' })
+  | Info:
+  != partial('info', { info: 'Her phone consists of five floating squares.' })
+  | Appearances:
+
+!= partial('appearances', { appearances: ['Prisoners of Love', 'Loyalty to the King', 'Ghost Princess', 'Hitman', 'Princess Monster Wife', 'What is Life?']})
