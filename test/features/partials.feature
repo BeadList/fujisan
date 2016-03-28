@@ -52,3 +52,25 @@ Scenario: Partials usage in jade
     <li>What is Life?</li>
   </ul>
   ---
+
+
+Scenario: Partials usage in handlebars
+  Given a fixture app "partials"
+  When I run "gulp fuji:build"
+  Then the following file should exist:
+  ---
+  build/hot-dog.html
+  ---
+  And the contents of it should be:
+  ---
+  <h1>Princess</h1>
+
+  <p>
+    Quote:
+    <q>I should give you a kiss!</q>
+
+    Info:
+    <strong>She has four cell phones, all of which she can use at the same time with her paws.</strong>
+    Appearances:
+  </p>
+  ---
