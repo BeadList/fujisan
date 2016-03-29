@@ -6,6 +6,7 @@ Scenario: Simple one everything included
   Then it outputs:
   ---
   fuji:build:partials
+  fuji:build:layouts
   fuji:build:public
   fuji:build:pages
   fuji:build:stylesheets
@@ -22,6 +23,7 @@ Scenario: Use different prefix
   Then it outputs:
   ---
   bravo:build:partials
+  bravo:build:layouts
   bravo:build:public
   bravo:build:pages
   bravo:build:stylesheets
