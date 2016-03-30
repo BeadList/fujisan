@@ -13,6 +13,7 @@ Scenario: Compile simple file
     color: red; }
   ---
 
+@smoke
 Scenario: Compile file with imports
   Given a fixture app "stylesheets"
   When I run "gulp fuji:build"
