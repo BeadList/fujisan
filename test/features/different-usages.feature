@@ -5,6 +5,7 @@ Scenario: Simple one everything included
   When I run "gulp --gulpfile=simple.js --tasks-simple"
   Then it outputs:
   ---
+  fuji:build:helpers
   fuji:build:partials
   fuji:build:layouts
   fuji:build:public
@@ -23,6 +24,7 @@ Scenario: Use different prefix
   When I run "gulp --gulpfile=with-prefix.js --tasks-simple"
   Then it outputs:
   ---
+  bravo:build:helpers
   bravo:build:partials
   bravo:build:layouts
   bravo:build:public
