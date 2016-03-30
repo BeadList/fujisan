@@ -13,6 +13,7 @@ Scenario: Helpers usage in ejs
   <p>there</p>
   ---
 
+@smoke
 Scenario: Helpers usage in handlebars
   Given a fixture app "helpers"
   When I run "gulp fuji:build"

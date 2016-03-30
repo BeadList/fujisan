@@ -12,6 +12,7 @@ Scenario: Compile simple file
   <html><body><h1>Hello World</h1></body></html>
   ---
 
+@smoke
 Scenario: Compile file with chained preprocessors
   Given a fixture app "pages"
   When I run "gulp fuji:build"

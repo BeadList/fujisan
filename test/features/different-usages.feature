@@ -17,6 +17,7 @@ Scenario: Simple one everything included
 
   ---
 
+@smoke
 Scenario: Use different prefix
   Given a fixture app "different-usages"
   When I run "gulp --gulpfile=with-prefix.js --tasks-simple"

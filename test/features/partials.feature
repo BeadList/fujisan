@@ -53,7 +53,7 @@ Scenario: Partials usage in jade
   </ul>
   ---
 
-
+@smoke
 Scenario: Partials usage in handlebars
   Given a fixture app "partials"
   When I run "gulp fuji:build"

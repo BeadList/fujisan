@@ -29,6 +29,7 @@ Scenario: Layouts usage in jade
   <html><body><header>Marks</header><h1>÷</h1></body></html>
   ---
 
+@smoke
 Scenario: Layouts usage in handlebars
   Given a fixture app "layouts"
   When I run "gulp fuji:build --gulpfile=with-footer.js"
