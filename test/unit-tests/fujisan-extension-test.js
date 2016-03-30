@@ -7,10 +7,9 @@ const FujisanExtension = require('../../lib/fujisan-extension');
 const through2 = require('through2');
 const bl = require('bl');
 
-const generator = through2.obj();
 
 let streamTestHelper = {
-  write(stream, values) {
+  write(stream, values, end) {
     values.forEach((v) => {
       stream.write(v);
     });
@@ -30,13 +29,12 @@ let streamTestHelper = {
 };
 
 class SampleExtension extends FujisanExtension {
-  stream(gulp, insert) {
-    return generator.pipe(insert());
-  }
-}
+
+};
 
 describe('FujisanExtension', () => {
   let sampleExtension = undefined;
+
   beforeEach(() => {
     let runner = {};
     sampleExtension = new SampleExtension(runner);
@@ -55,8 +53,9 @@ describe('FujisanExtension', () => {
 
     it('injects passThrough to stream', (done) => {
       sampleExtension.stream = (insert) => {
-        streamTestHelper.write(insert, [1, 2]);
-        streamTestHelper.read(insert, (err, result) => {
+        let stream = insert();
+        streamTestHelper.write(stream, [1, 2]);
+        streamTestHelper.read(stream, (err, result) => {
           expect(result).to.deep.equal([1, 2]);
           done();
         });
@@ -66,6 +65,30 @@ describe('FujisanExtension', () => {
   });
 
   describe('#pipeThrough', () => {
+   let generator = undefined;
 
+    beforeEach(()=> {
+      generator = through2.obj();
+
+      sampleExtension.stream = (insert) => {
+        return generator.pipe(insert());
+      };
+    });
+
+    it('inserts stream', (done) => {
+      let twice = through2.obj((num, enc, cb) => {
+        cb(null, num * 2);
+      });
+
+      sampleExtension.pipeThrough(twice);
+
+      streamTestHelper.write(generator, [2, 3]);
+
+      streamTestHelper.read(sampleExtension.getStream(), (err, result) => {
+        console.log(result);
+        expect(result).to.deep.equal([4, 7]);
+        done();
+      });
+    });
   });
 });
