@@ -45,3 +45,20 @@ Scenario: Layouts usage in handlebars
     </body>
   </html>
   ---
+
+Scenario: Layouts usage in markdown
+  Given a fixture app "layouts"
+  When I run "gulp fuji:build"
+  Then the following file should exist:
+  ---
+  build/asterism.html
+  ---
+  And the contents of it should be:
+  ---
+  <html>
+    <body>
+      <h1>⁂</h1>
+
+    </body>
+  </html>
+  ---
