@@ -1,5 +1,3 @@
-/*global require describe it beforeEach */
-
 'use strict';
 var expect = require('chai').expect;
 

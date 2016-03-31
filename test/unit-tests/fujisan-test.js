@@ -1,5 +1,3 @@
-/*global require describe it beforeEach */
-
 var process = require('process');
 
 var gulp = require('gulp');

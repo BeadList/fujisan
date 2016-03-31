@@ -1,4 +1,4 @@
-/*global require, featureFile, scenarios, steps, process */
+/*global featureFile, scenarios, steps*/
 var Yadda = require('yadda');
 Yadda.plugins.mocha.StepLevelPlugin.init();
 new Yadda.FeatureFileSearch('./test/features').each(function(file) {
