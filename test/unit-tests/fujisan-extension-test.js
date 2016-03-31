@@ -3,8 +3,6 @@ var expect = require('chai').expect;
 
 const FujisanExtension = require('../../lib/fujisan-extension');
 const through2 = require('through2');
-const bl = require('bl');
-
 
 let streamTestHelper = {
   write(stream, values, end) {
