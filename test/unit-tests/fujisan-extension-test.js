@@ -81,8 +81,7 @@ describe('FujisanExtension', () => {
       streamTestHelper.write(generator, [2, 3]);
 
       streamTestHelper.read(sampleExtension.getStream(), (err, result) => {
-        console.log(result);
-        expect(result).to.deep.equal([4, 7]);
+        expect(result).to.deep.equal([4, 6]);
         done();
       });
     });
