@@ -9,6 +9,7 @@ Scenario: Simple one everything included
   fuji:build:pages
   fuji:build:stylesheets
   fuji:build:javascripts
+  fuji:build:images
   fuji:build:helpers
   fuji:build:partials
   fuji:build:layouts
@@ -28,6 +29,7 @@ Scenario: Use different prefix
   bravo:build:pages
   bravo:build:stylesheets
   bravo:build:javascripts
+  bravo:build:images
   bravo:build:helpers
   bravo:build:partials
   bravo:build:layouts
