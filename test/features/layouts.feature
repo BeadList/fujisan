@@ -83,6 +83,8 @@ Scenario: Layouts usage with other content
   
   <h1>¶</h1>
 
+      <aside>
+  Me Pilcrow    </aside>
     </body>
   </html>
   ---
@@ -101,6 +103,9 @@ Scenario: Layouts usage with other content
     <body>
       <h1>⁂</h1>
 
+      <aside>
+        <p>Strokes</p>
+      </aside>
     </body>
   </html>
   ---
@@ -122,6 +127,9 @@ Scenario: Layouts usage with other content
     <body>
       <h1>⁀</h1>
 
+      <aside>
+    Me <strong>Tie</strong>
+      </aside>
     </body>
   </html>
   ---

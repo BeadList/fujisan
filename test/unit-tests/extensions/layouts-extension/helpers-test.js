@@ -43,6 +43,23 @@ describe('helpers', () => {
       expect(yieldContent('nipple', 'Head-Smashed-In Buffalo Jump'))
         .to.equal('Head-Smashed-In Buffalo Jump');
     });
+
+    it('yields block if value is not defined', () => {
+      context.file = {
+        contentFor: {
+          default: 'Chocolate Hills'
+        }
+      };
+
+      context.arguments = [{
+        fn: () => {
+          return 'Mount Toogood';
+        }
+      }];
+
+      expect(yieldContent('nipple', 'Head-Smashed-In Buffalo Jump'))
+        .to.equal('Mount Toogood');
+    });
   });
 
   describe('.contentFor', () => {
