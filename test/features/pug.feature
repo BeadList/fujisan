@@ -1,6 +1,5 @@
 Feature: Pug
 
-@focus
 Scenario: Extends and includes
   Given a fixture app "pug"
   When I run "gulp fuji:build"
