@@ -30,7 +30,7 @@
     "ejs": "^2.4.1",
     "gulp": "gulpjs/gulp.git#4.0",
     "gulp-babel": "^6.1.2",
-    "gulp-chained-preprocessors": "0.10.0",
+    "gulp-chained-preprocessors": "^0.11.0",
     "handlebars": "^4.0.5",
     "jade": "^1.11.0",
     "lodash": "^4.6.1",
