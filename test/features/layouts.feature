@@ -63,6 +63,7 @@ Scenario: Layouts usage in markdown
   </html>
   ---
 
+@smoke
 Scenario: Layouts usage with other content
   Given a fixture app "layouts"
   When I run "gulp fuji:build --gulpfile=with-other-content.js"
@@ -81,6 +82,45 @@ Scenario: Layouts usage with other content
     <body>
   
   <h1>¶</h1>
+
+    </body>
+  </html>
+  ---
+  And the following file should exist:
+  ---
+  build/asterism.html
+  ---
+  And the contents of it should be:
+  ---
+  <html>
+    <head>
+      <title>
+        Marks and Signs
+      </title>
+    </head>
+    <body>
+      <h1>⁂</h1>
+
+    </body>
+  </html>
+  ---
+  And the following file should exist:
+  ---
+  build/tie.html
+  ---
+  And the contents of it should be:
+  ---
+  <html>
+    <head>
+      <title>
+          I
+    Am
+    <strong>Tie</strong>
+
+      </title>
+    </head>
+    <body>
+      <h1>⁀</h1>
 
     </body>
   </html>

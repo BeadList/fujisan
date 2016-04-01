@@ -58,5 +58,17 @@ describe('helpers', () => {
       contentFor('nipple', 'Nipple Peak');
       expect(context.file.contentFor.nipple).to.equal('Nipple Peak');
     });
+
+    it('stores block content', () => {
+      context.file = {};
+      context.arguments = [{
+        fn: () => {
+          return 'Chocolate Mountain';
+        }
+      }];
+
+      contentFor('chocolate');
+      expect(context.file.contentFor.chocolate).to.equal('Chocolate Mountain');
+    });
   });
 });
