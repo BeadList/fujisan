@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous"/><link rel="stylesheet" href="http://beadwall.github.io/fujisan/stylesheets/main.css"/></head><body><nav class="navbar navbar-dark bg-inverse"><a class="navbar-brand" href="http://beadwall.github.io/fujisan//">Fujisan</a><ul class="nav navbar-nav"><li class="nav-item active"><a class="nav-link" href="http://beadwall.github.io/fujisan/documentation">Documentation</a></li></ul></nav><div class="container m-y-2"><div class="row"><div class="col-md-8 col-md-push-2"><h1>Helpers</h1>
+<p>Helpers are small pieces of javascripts, which used to simplify generation of
+your your pages, stylesheets, javascripts.</p>
+<p>For example, let's say you've got there file &quot;heading.js&quot;, with
+contents:</p>
+<pre><code class="language-js">export default (text) =&gt; {
+  return `&lt;h1 class=&quot;heading&quot;&gt;${text}&lt;/h1&gt;`
+};
+</code></pre>
+<p>Then you can use it in your templates, let's say you use handlebars,
+the you would use your helper like this:</p>
+<pre><code class="language-js">{{{ heading &quot;Fitz Roy&quot; }}}
+&lt;p&gt;
+  Argentine explorer Francisco Moreno first saw the mountain on 2 March 1877. He
+  named it Fitz Roy, in honour of Robert FitzRoy, who, as captain of the HMS
+  Beagle had travelled up the Santa Cruz River in 1834 and charted large parts
+  of the Patagonian coast.
+&lt;/p&gt;
+
+</code></pre>
+<p>Helpers should be stored in <code>/source/helpers</code></p>
+<h2>Helpers Normalization</h2>
+<p>By default Fujisan normalizes helpers, so that they can be used across different
+apps. All extra arguments are stored in <code>arguments</code> of the context of
+helper. And helper context can be accessed via <code>this</code> within the function.</p>
+<p>You can use block helpers if they are supported by your template engine.</p>
+<p><a href="./documentation.html">&lt; Back to Documentation</a></p>
+</div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script></body></html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous"/><link rel="stylesheet" href="http://beadwall.github.io/fujisan/stylesheets/main.css"/></head><body><nav class="navbar navbar-dark bg-inverse"><a class="navbar-brand" href="http://beadwall.github.io/fujisan//">Fujisan</a><ul class="nav navbar-nav"><li class="nav-item active"><a class="nav-link" href="http://beadwall.github.io/fujisan/documentation">Documentation</a></li></ul></nav><div class="container m-y-2"><div class="row"><div class="col-md-8 col-md-push-2"><h1>Layouts</h1>
+<p>Layouts are blocks of pages which wrap around your main parts of pages, and can
+be used for common parts like headers, footers, scripts, and stylesheets.</p>
+<p>Layouts are stored in layouts directory. They can be preprocessed same way as
+the pages are.</p>
+<p>Let's say we've got a handlebars layout:</p>
+<pre><code class="language-hbs">&lt;!doctype html&gt;
+&lt;html class=&quot;no-js&quot; lang=&quot;&quot;&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/main.css&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+     {{{ yieldContent }}}
+     &lt;script src=&quot;javascripts/main.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>And the index page:</p>
+<pre><code class="language-html">&lt;h1&gt;Fitz Roy&lt;/h1&gt;
+
+&lt;p&gt;
+  Monte Fitz Roy (also known as Cerro Chaltén, Cerro Fitz Roy, or simply Mount
+  Fitz Roy) is a mountain located near El Chaltén village, in the Southern
+  Patagonian Ice Field in Patagonia, on the border between Argentina and
+  Chile. First climbed in 1952 by French alpinists Lionel Terray and Guido
+  Magnone, it remains among the most technically challenging mountains for
+  mountaineers on Earth.
+&lt;/p&gt;
+</code></pre>
+<p>Then, the index page will be inserted in the place of <code>{{{ yieldContent }}}</code>.
+And the rendered page will be:</p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html class=&quot;no-js&quot; lang=&quot;&quot;&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/main.css&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+     &lt;h1&gt;Fitz Roy&lt;/h1&gt;
+     &lt;p&gt;
+       Monte Fitz Roy (also known as Cerro Chaltén, Cerro Fitz Roy, or simply
+       Mount Fitz Roy) is a mountain located near El Chaltén village, in the
+       Southern Patagonian Ice Field in Patagonia, on the border between
+       Argentina and Chile. First climbed in 1952 by French alpinists Lionel
+       Terray and Guido Magnone, it remains among the most technically
+       challenging mountains for mountaineers on Earth.
+     &lt;/p&gt;
+     &lt;script src=&quot;javascripts/main.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>You can use whatever preprocessors: for example including markdown + handlebars
+page into pug templates.</p>
+<h2>Defining content for specific parts of layout</h2>
+<p>You can define certain parts of layouts, by using <code>contentFor(key, string)</code>. And
+for template engines which support block helpers, you can pass blocks. I.e.</p>
+<pre><code class="language-hbs">{{ contentFor 'title' 'Fitz Roy' }}
+{{# contentFor 'discovery' }}
+  Argentine explorer Francisco Moreno first saw the mountain on 2 March 1877. He
+  named it Fitz Roy, in honour of Robert FitzRoy, who, as captain of the HMS
+  Beagle had travelled up the Santa Cruz River in 1834 and charted large parts
+  of the Patagonian coast.
+{{/ contentFor }}
+
+&lt;p&gt;
+  Monte Fitz Roy (also known as Cerro Chaltén, Cerro Fitz Roy, or simply
+  Mount Fitz Roy) is a mountain located near El Chaltén village, in the
+  Southern Patagonian Ice Field in Patagonia, on the border between
+  Argentina and Chile. First climbed in 1952 by French alpinists Lionel
+  Terray and Guido Magnone, it remains among the most technically
+  challenging mountains for mountaineers on Earth.
+&lt;/p&gt;
+&lt;/html&gt;
+</code></pre>
+<p>And for using you can just pass the key to yield content function.</p>
+<pre><code class="language-hbs">&lt;!doctype html&gt;
+&lt;html class=&quot;no-js&quot; lang=&quot;&quot;&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/main.css&quot;&gt;
+    &lt;title
+      {{ yieldContent 'title' }}
+    &lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+     &lt;h1&gt;{{{ yieldContent 'title' }}}&lt;/h1&gt;
+     {{{ yieldContent }}}
+     &lt;script src=&quot;javascripts/main.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>Default values</h2>
+<p>You can specify default values for <code>yieldContent</code> as second argument or as a
+block.</p>
+<pre><code class="language-hbs">&lt;!doctype html&gt;
+&lt;html class=&quot;no-js&quot; lang=&quot;&quot;&gt;
+  &lt;head&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;stylesheets/main.css&quot;&gt;
+    &lt;title
+      {{ yieldContent 'title' 'Amazing Mountains' }}
+    &lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+     {{# yieldContent 'heading }}
+       &lt;h1&gt; One more lovely mountain&lt;/h1&gt;
+     {{/ yieldContent }}
+     {{{ yieldContent }}}
+     &lt;script src=&quot;javascripts/main.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2>Template specific layouts</h2>
+<p>You still can use template specific layouts, like <code>extends</code> in pug.</p>
+<pre><code class="language-jade">doctype html
+html
+  head
+    link(rel=&quot;stylesheet&quot; href=&quot;stylesheets/main.css&quot;)
+    block title
+      title Amazing Mountains
+  body
+    block heading
+      h1 One more lovely mountain
+    block content
+    script(src=&quot;javascripts/main.js&quot;)
+</code></pre>
+<h2>Configuration</h2>
+<p>You can set default template name via <code>config.layout</code>, or disable layouts all
+together by setting it to false. Its default value is 'default';</p>
+<pre><code class="language-json">{
+  layout: 'main'
+}
+</code></pre>
+<p><a href="./documentation.html">&lt; Back to Documentation</a></p>
+</div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script></body></html>

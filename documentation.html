@@ -1,14 +1,45 @@
-<p><a href="/">home</a></p>
-<h1>Documentation</h1>
-<p>Here comes some great docs which explain why Fujisan is so cool. See
-it yourself:</p>
-<h2>Links</h2>
-<p>Key Concepts:</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous"/><link rel="stylesheet" href="http://beadwall.github.io/fujisan/stylesheets/main.css"/></head><body><nav class="navbar navbar-dark bg-inverse"><a class="navbar-brand" href="http://beadwall.github.io/fujisan//">Fujisan</a><ul class="nav navbar-nav"><li class="nav-item active"><a class="nav-link" href="http://beadwall.github.io/fujisan/documentation">Documentation</a></li></ul></nav><div class="container m-y-2"><div class="row"><div class="col-md-8 col-md-push-2"><h1>Documentation</h1>
+<p>Fujisan is a static site generator.</p>
+<p>It supports all default features you would expect from static site generator:
+<a href="./partials.html">partials</a>, <a href="./layouts.html">layouts</a>, <a href="./helpers.html">helpers</a>, <em>data(TODO)</em>,
+<em>frontmatter(TODO)</em>. A bunch of preprocessors are already built in, including
+ejs, handlebars, markdown, <a href="https://github.com/pugjs/pug/issues/2184">pug</a>, sass, coffeescript, babel. The rest can
+be installed as easy as just including their name to your <code>packages.json</code>.</p>
+<p>And more than that you can actually chain preprocessors, to pass one file
+through several preprocessors. Which alows you to use handlebars(or ejs, or
+whatever) alongside with markdown in the same file.</p>
+<p>Fujisan is based on gulp and expected to use just rock solid technologies at its
+foundation, to make integration into existing projects is <em>peace of cake(lie,
+TODO)</em>. Writing extensions and tweaking internals is easy as well.</p>
+<p>You can link your resources easily by using awesome <em>resourceTree(TODO)</em>.</p>
+<h2>Key Principles</h2>
 <ul>
-<li><a href="./chain-preprocessors.html">chain preprocessors</a></li>
+<li>Everything included by defaults. So, you won't spend much time configuring and
+can get to value very fast, not building your infrastructure.</li>
+<li>Based on known technology, easy to extend and change if the defaults don't
+work well for you.</li>
+<li>As less WTF moments for developer as possible.</li>
 </ul>
-<p>Source:</p>
+<h2>Installation</h2>
+<pre><code class="language-shell">npm install --save-dev gulp fujisan
+</code></pre>
+<p>And in your gulpfile put this:</p>
+<pre><code class="language-js">var gulp = require('gulp');
+var config = {};
+var fujisan = require('fujisan')({ gulp: gulp, config: config });
+</code></pre>
+<p>You can learn more about configuration here(TODO).</p>
+<h2>Usage</h2>
+<p>Check out each feature page to get the maximum from Fujisan.</p>
 <ul>
-<li><a href="./pages.html">pages</a></li>
-<li><a href="./public.html">public</a></li>
+<li><a href="./public.html">Public</a></li>
+<li><a href="./pages.html">Pages</a></li>
+<li><a href="./javascripts.html">Javascripts</a></li>
+<li><a href="./stylesheets.html">Stylesheets</a></li>
+<li><a href="./processing.html">Processing</a></li>
+<li><a href="./helpers.html">Helpers</a></li>
+<li><a href="./partials.html">Partials</a></li>
+<li><a href="./layouts.html">Layouts</a></li>
 </ul>
+<p>More great and important features are comming soon.</p>
+</div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script></body></html>

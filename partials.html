@@ -1,0 +1,45 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous"/><link rel="stylesheet" href="http://beadwall.github.io/fujisan/stylesheets/main.css"/></head><body><nav class="navbar navbar-dark bg-inverse"><a class="navbar-brand" href="http://beadwall.github.io/fujisan//">Fujisan</a><ul class="nav navbar-nav"><li class="nav-item active"><a class="nav-link" href="http://beadwall.github.io/fujisan/documentation">Documentation</a></li></ul></nav><div class="container m-y-2"><div class="row"><div class="col-md-8 col-md-push-2"><h1>Partials</h1>
+<p>Partials are small chunks of pages which can be used across pages to avoid
+duplication. You can use them in pages, layouts, other partials or even in
+helpers.</p>
+<p>Partials are stored in <code>source/partials</code> directory.</p>
+<p>Let's say we've got a handlebars partial:</p>
+<pre><code class="language-html">&lt;header&gt;
+   &lt;strong&gt;{{mountainName}}&lt;/strong&gt;
+&lt;/header&gt;
+</code></pre>
+<p>And we have pug partial footer:</p>
+<pre><code class="language-jade">footer
+  strong= {{discoveredBy}}
+</code></pre>
+<p>We can include them into ejs partial using universal <code>partial</code> helper:</p>
+<pre><code class="language-html">&lt;%- partial('header', { mountainName: &quot;Fitz Roy&quot; }) %&gt;
+&lt;main&gt;
+  &lt;p&gt;
+  Argentine explorer Francisco Moreno first saw the mountain on 2 March 1877. He
+  named it Fitz Roy, in honour of Robert FitzRoy, who, as captain of the HMS
+  Beagle had travelled up the Santa Cruz River in 1834 and charted large parts
+  of the Patagonian coast.
+  &lt;/p&gt;
+&lt;/main&gt;
+&lt;%- partial('footer, { discoveredBy: &quot;Francisco Moreno&quot; }) %&gt;
+</code></pre>
+<p>Which will result in page:</p>
+<pre><code class="language-html">&lt;header&gt;
+   &lt;strong&gt;Fitz Roy/strong&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;p&gt;
+  Argentine explorer Francisco Moreno first saw the mountain on 2 March 1877. He
+  named it Fitz Roy, in honour of Robert FitzRoy, who, as captain of the HMS
+  Beagle had travelled up the Santa Cruz River in 1834 and charted large parts
+  of the Patagonian coast.
+  &lt;/p&gt;
+&lt;/main&gt;
+&lt;footer&gt;
+   &lt;strong&gt;Francisco Moreno&lt;/strong&gt;
+&lt;/footer&gt;
+</code></pre>
+<p>TODO: Additionaly you can use engine specific partials</p>
+<p><a href="./documentation.html">&lt; Back to Documentation</a></p>
+</div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script></body></html>

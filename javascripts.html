@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous"/><link rel="stylesheet" href="http://beadwall.github.io/fujisan/stylesheets/main.css"/></head><body><nav class="navbar navbar-dark bg-inverse"><a class="navbar-brand" href="http://beadwall.github.io/fujisan//">Fujisan</a><ul class="nav navbar-nav"><li class="nav-item active"><a class="nav-link" href="http://beadwall.github.io/fujisan/documentation">Documentation</a></li></ul></nav><div class="container m-y-2"><div class="row"><div class="col-md-8 col-md-push-2"><h1>JavaScripts</h1>
+<p>JavaScripts are clientside js files, which are going to be
+<a href="./processing.html">processed</a>. By default, you can use ES6, which is transformed by
+babel. As in the <a href="./pages.html">pages</a>, you can use <a href="./partials.html">partials</a> and
+<a href="./helpers.html">helpers</a> inside your javascripts, for more flexible generation. For
+instance, it can be used for passing build variables or pices of html to your
+js via ejs:</p>
+<pre><code class="language-js">const isProduction = &lt;%- process.env.NODE_ENV === 'production' %&gt;;
+const simpleTemplate = (path, name) =&gt; {
+  return `&lt;%- partial('simple-one') %&gt;`
+};
+</code></pre>
+<p>Which can result in:</p>
+<pre><code class="language-js">const isProduction = true;
+const simpleTemplate = (path, name) =&gt; {
+  retrurn `&lt;a href=&quot;${path}&quot;&gt;${name}&lt;/a&gt;`
+};
+</code></pre>
+<p>Pages go into <code>source/javascripts</code> directory.</p>
+<h2>Configuration</h2>
+<p>You can change babel settings via <code>config.babel</code>. Or you can disable
+it all together by setting it to <em>false(TODO)</em>. Its default value is</p>
+<pre><code class="language-json">{
+  babel: {
+    presets: ['es2015']
+  }
+}
+</code></pre>
+<p><a href="./documentation.html">&lt; Back to Documentation</a></p>
+</div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script></body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous"/><link rel="stylesheet" href="http://beadwall.github.io/fujisan/stylesheets/main.css"/></head><body><nav class="navbar navbar-dark bg-inverse"><a class="navbar-brand" href="http://beadwall.github.io/fujisan//">Fujisan</a><ul class="nav navbar-nav"><li class="nav-item active"><a class="nav-link" href="http://beadwall.github.io/fujisan/documentation">Documentation</a></li></ul></nav><div class="container m-y-2"><div class="row"><div class="col-md-8 col-md-push-2"><h1>Processing</h1>
+<p>By default any file in pages, javascripts, stylesheets, <em>helpers(TODO)</em> will be
+preprocessed. More than that it can pass through multiple preprocessors. For
+that just add preprocessor extension to file, in reverse order they are going to
+be preprocessed, i.e. to preprocess html page with ejs and then with markdown,
+use <code>index.html.md.ejs</code> which will be processed to <code>index.html</code>. Notice the html
+extension presence in both files.</p>
+<h2>Three classes of preporcessors</h2>
+<p>You can preprocess js, html, css files. There are 3 classes of preprocessors:
+First, Second and Third.</p>
+<p>First class preprocessors <strong>will</strong> work great in your project, are installed by
+default, well-tested, and all their special features are supposed to work.</p>
+<p>Second class preprocessors <strong>should</strong> work great(TODO). They are smoke tested
+and work as soon as you install them. Their special features should work too.</p>
+<p>Third class preprocessors <strong>may</strong> work great(TODO). They are not smoke tested
+though, and their special features may not work.</p>
+<p>More on that you can read <a href="https://github.com/BeadWall/fujisan/wiki/Preprocessors">here</a></p>
+<h2>First Class Preprocsesors</h2>
+<p>By default fujisan comes with these preprocessors:</p>
+<table>
+    <thead>
+        <tr>
+          <th>
+            Preprocessor
+          </th>
+          <th>
+            Extension
+          </th>
+          <th>
+            Type
+          </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <th scope="row">
+            EJS
+          </th>
+          <td>
+            ejs
+          </td>
+          <td>
+            html
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            Pug(ex-jade)
+          </th>
+          <td>
+            jade (for now)
+          </td>
+          <td>
+            html
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            Handlebars(ex-jade)
+          </th>
+          <td>
+            hbs
+          </td>
+          <td>
+            html
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            Markdown (commonmark engine)
+          </th>
+          <td>
+            md
+          </td>
+          <td>
+            html
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            CoffeeScript
+          </th>
+          <td>
+            coffee
+          </td>
+          <td>
+            js
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            SASS(scss-style)(TODO)
+          </th>
+          <td>
+            scss
+          </td>
+          <td>
+            css
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            SASS(sass-style)
+          </th>
+          <td>
+            sass
+          </td>
+          <td>
+            css
+          </td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<h2>Second and Third Class Preprocsesors</h2>
+<p>Second and third class preprocsesors are yet not supported. It's the matter of
+contribution to <a href="https://github.com/BeadWall/chained-preprocessors">chained-preprocessors</a></p>
+<h2>Processing Pages</h2>
+<h3>Pug(ex-jade)</h3>
+<p>Jade is yet in <a href="https://github.com/pugjs/pug/issues/2184">transition</a> to pug. So for now it's better to use
+jade extension. Feel free to use includes and extends, using relative paths. Or
+you can use absolute paths relative to <code>source</code> directory. I.e.</p>
+<pre><code class="language-pug">extends /layouts/main.html.jade
+</code></pre>
+<h3>Handlebars</h3>
+<p>Handlebars block helpers and <em>partials(TODO)</em> are well supported.</p>
+<p>Note Fujisan normalizes helpers, so that they can be used across different
+apps. Thus in order to access handlebars options hash(last extra argument), you
+have to use <code>this.arguments[0]</code>. Although <code>options.hash</code> is passed as last
+options to the helper(TODO). So helpers could be used in a similar manner in
+ejs, and hbs:</p>
+<pre><code class="language-ejs">&lt;%- linkTo('/', 'index', { 'class': 'primary' }) %&gt;
+</code></pre>
+<pre><code class="language-hbs">{{{ linkTo &quot;/&quot; &quot;index&quot; class=&quot;primary&quot; }}}
+</code></pre>
+<p>You can disable this behaviour by setting
+<code>config.preprocsesors.normalizeHelpers</code> to <code>false</code>;</p>
+<h2>Processing JavaScripts</h2>
+<p>By default all javascripts, <a href="./javascripts.html">will go through babel</a>.</p>
+<h2>Configuration</h2>
+<p>Preprocessors can be configured via <code>config.preprocessors</code>. You can disable
+helpers normalization(look Handlebars section of this page), via
+<code>config.preprocessors.helpers</code>. You can pass whatever data or configuration
+which will affect all preprocessors via <code>config.preprocessors.all</code>, or tweak
+each preprocessor via it extension as key, i.e. <code>config.preprocessors.hbs</code>.</p>
+<p><a href="./documentation.html">&lt; Back to Documentation</a></p>
+</div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script></body></html>
